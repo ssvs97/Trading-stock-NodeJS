@@ -6,7 +6,7 @@ import email from "../emails/sendCode";
 const routerAuthentication = new Router();
 
 /**
- * @api {post} /signup Sign up
+ * @api {post} /authentication/signup Sign up
  * @apiGroup Authentication
  *
  *
@@ -49,7 +49,7 @@ routerAuthentication.post(
 );
 
 /**
- * @api {post} /login Login
+ * @api {post} /authentication/login Login
  * @apiGroup Authentication
  *
  * @apiParam {String} email Required.
@@ -86,7 +86,7 @@ routerAuthentication.post(
 );
 
 /**
- * @api {get} /logout Logout from current device
+ * @api {get} /authentication/logout Logout from current device
  * @apiGroup Authentication
  *
  * @apiSuccessExample Success-Response:
@@ -118,7 +118,7 @@ routerAuthentication.get(
 );
 
 /**
- * @api {get} /logout-all Logout from all devices
+ * @api {get} /authentication/logout-all Logout from all devices
  * @apiGroup Authentication
  *
  * @apiSuccessExample Success-Response:
@@ -126,7 +126,6 @@ routerAuthentication.get(
  *     {}
  *
  */
-//logout from all devices
 routerAuthentication.get(
   "/authentication/logout-all",
   auth,
