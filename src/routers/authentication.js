@@ -15,7 +15,9 @@ const routerAuthentication = new Router();
  * @apiParam {String} password Required.
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
- *     {}
+ *     {
+ *        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4Mzk5ZWJhNGY0ZTAwMTVhM2U3MTkiLCJpYXQiOjE2MjA2ODQ0Njl9.FKkhU4TWwWjvouucW_csj8bJ2dZK5pLYo1ZmavjLw0U"
+ *     }
  *
  */
 routerAuthentication.post(
@@ -41,7 +43,7 @@ routerAuthentication.post(
       //generate token and put it into cookie
       response = await User.createCookies(response, token);
 
-      response.send({ codeToken: token });
+      response.send({ token: token });
     } catch (error) {
       response.status(400).send(error.message);
     }
@@ -55,8 +57,10 @@ routerAuthentication.post(
  * @apiParam {String} email Required.
  * @apiParam {String} password Required.
  * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *     {}
+ *     HTTP/1.1 200
+ *     {
+ *         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4Mzk5ZWJhNGY0ZTAwMTVhM2U3MTkiLCJpYXQiOjE2MjA2ODQ0Njl9.FKkhU4TWwWjvouucW_csj8bJ2dZK5pLYo1ZmavjLw0U"
+ *     }
  *
  */
 routerAuthentication.post(
@@ -74,7 +78,7 @@ routerAuthentication.post(
         //generate auth token
         const token = await user.generateAuthToken();
 
-        return response.send({ codeToken: token });
+        return response.send({ token: token });
       }
       response.status(404).send({ error: user.message });
     } catch (error) {
