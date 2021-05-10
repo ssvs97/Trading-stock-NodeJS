@@ -106,20 +106,6 @@ userSchema.statics.generateCode = async function () {
   return [code, token];
 };
 
-//create token and put it into cookie
-userSchema.statics.createCookies = async function (response, token) {
-  //put the token into browser's coockie
-  response.cookie("token", token, {
-    signed: true,
-    maxAge: 900000,
-    httpOnly: true,
-  });
-  //auth key to remain user login even if closing broswer
-  response.cookie("auth", true, { maxAge: 900000 });
-
-  return response;
-};
-
 //delete unnecessary information while responding to request
 userSchema.methods.toJSON = function () {
   const user = this;

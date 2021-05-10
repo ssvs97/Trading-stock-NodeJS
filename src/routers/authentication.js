@@ -20,7 +20,7 @@ const routerAuthentication = new Router();
  */
 routerAuthentication.post(
   "/authentication/signup",
-  async (request, response, next) => {
+  async (request, response) => {
     try {
       //generate the code (4 digits) and its token formate
       const [code, codeToken] = await User.generateCode();
@@ -41,7 +41,7 @@ routerAuthentication.post(
       //generate token and put it into cookie
       response = await User.createCookies(response, token);
 
-      response.send();
+      response.send({ codeToken: token });
     } catch (error) {
       response.status(400).send(error.message);
     }
@@ -74,9 +74,7 @@ routerAuthentication.post(
         //generate auth token
         const token = await user.generateAuthToken();
 
-        //generate token and put it into cookie
-        response = await User.createCookies(response, token);
-        return response.send();
+        return response.send({ codeToken: token });
       }
       response.status(404).send({ error: user.message });
     } catch (error) {

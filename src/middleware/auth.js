@@ -3,9 +3,8 @@ import User from "../models/users.js";
 
 const auth = async (request, response, next) => {
   try {
-    //take the token weather from cookies or header request
-    const token =
-      request.signedCookies.token || request.header("Authorization");
+    //take the token from header request
+    const token = request.header("Authorization");
 
     //extract information from token
     const decode = verify(token, process.env.JWT_PRIVATE_KEY);
