@@ -80,7 +80,7 @@ routerUser.post("/user/avatar-upload-ack", auth, async (request, response) => {
  *     {}
  *
  */
-router.delete("/users/avatar-remove", auth, async (request, response) => {
+routerUser.delete("/users/avatar-remove", auth, async (request, response) => {
   try {
     //check if image exist
     if (!request.user.avatar) response.status(404).send();
