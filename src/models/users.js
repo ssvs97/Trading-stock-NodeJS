@@ -49,7 +49,7 @@ const userSchema = new Schema({
     },
   ],
   avatar: {
-    type: Buffer,
+    type: String,
   },
 });
 

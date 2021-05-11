@@ -2,9 +2,10 @@
 import "./db/mongoose";
 //declaration packages
 import express, { json } from "express";
+import cors from "cors";
 import routerAuthentication from "./routers/authentication";
 import routerVerification from "./routers/verification";
-import cors from "cors";
+import routerUser from "./routers/users";
 
 //declaration server
 const app = express();
@@ -14,6 +15,7 @@ app.use(json());
 app.use(cors());
 
 //declaration routers
+app.use(routerUser); //..
 app.use(routerAuthentication); //..
 app.use(routerVerification); //..
 

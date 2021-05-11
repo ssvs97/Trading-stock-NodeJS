@@ -77,7 +77,7 @@ routerVerification.get(
 
       response.send();
     } catch (error) {
-      response.send({ error: error.message });
+      response.status(400).send({ error: error.message });
     }
   }
 );
