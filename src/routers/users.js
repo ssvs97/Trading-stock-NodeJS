@@ -12,7 +12,7 @@ const s3 = new S3({
 const routerUser = new Router();
 
 /**
- * @api {get} /user/avatar-upload-request Upload profile picture
+ * @api {post} /user/avatar-upload-request Upload profile picture
  * @apiGroup User
  *
  * @apiParam {String} fileType Required.
@@ -24,7 +24,7 @@ const routerUser = new Router();
  *     }
  *
  */
-routerUser.get(
+routerUser.post(
   "/user/avatar-upload-request",
   auth,
   async (request, response) => {
